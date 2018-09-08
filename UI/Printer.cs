@@ -16,7 +16,6 @@ namespace BildeConsole
             _customerService = customerService;
 
             DataInit();
-            //StartUI();
         }
 
         #region UI
