@@ -14,9 +14,8 @@ namespace BildeConsole
         public Printer(ICustomerService customerService)
         {
             _customerService = customerService;
-
+            // TEST
             DataInit();
-            //StartUI();
         }
 
         #region UI
