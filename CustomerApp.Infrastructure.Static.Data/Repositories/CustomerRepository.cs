@@ -2,6 +2,7 @@
 using CustomerApp.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CustomerApp.Infrastructure.Static.Data.Repositories
@@ -60,14 +61,16 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
 
         public Customer ReadyById(int id)
         {
-            foreach (var customer in FakeDB.Customers)
-            {
-                if (customer.Id == id)
+
+            return FakeDB.Customers.
+                Select(x => new Customer()
                 {
-                    return customer;
-                }
-            }
-            return null;
+                    Id = x.Id,
+                    Address = x.Address,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                }).FirstOrDefault(x => x.Id == id);
+
 
         }
 

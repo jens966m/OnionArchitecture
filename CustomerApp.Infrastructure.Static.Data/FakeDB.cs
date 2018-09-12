@@ -13,5 +13,7 @@ namespace CustomerApp.Infrastructure.Static.Data
         public static int OrderId = 1;
         public static readonly List<Order> Orders = new List<Order>();
 
+
+
     }
 }

@@ -33,6 +33,7 @@ namespace MyRestAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Order> Get(int id)
         {
+            if (id < 1) return BadRequest("Order must be greater than 0");
             return _orderService.GetOrderById(id);
         }
 
@@ -40,7 +41,18 @@ namespace MyRestAPI.Controllers
         [HttpPost]
         public ActionResult<Order> Post([FromBody] Order order)
         {
+            try
+            {
             return _orderService.CreateOrder(order);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+                
+            }
+
+
+
 
         }
 

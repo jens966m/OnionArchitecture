@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>430</y>
-      <w>210</w>
-      <h>100</h>
+      <x>702</x>
+      <y>559</y>
+      <w>273</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>Customer
 --
@@ -21,10 +21,10 @@ LastName: string
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>430</y>
-      <w>210</w>
-      <h>120</h>
+      <x>221</x>
+      <y>559</y>
+      <w>273</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Address
 --
@@ -40,10 +40,10 @@ ZipCode: string
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>200</y>
-      <w>210</w>
-      <h>100</h>
+      <x>715</x>
+      <y>260</y>
+      <w>273</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>Fine
 --
@@ -55,10 +55,10 @@ PayDate : DateTime</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>370</x>
-      <y>470</y>
-      <w>190</w>
-      <h>50</h>
+      <x>481</x>
+      <y>611</y>
+      <w>247</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..n
@@ -69,10 +69,10 @@ m2=0..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>290</y>
-      <w>50</w>
-      <h>160</h>
+      <x>806</x>
+      <y>377</y>
+      <w>65</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
@@ -83,15 +83,59 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>20</x>
-      <y>20</y>
-      <w>190</w>
-      <h>50</h>
+      <x>494</x>
+      <y>273</y>
+      <w>247</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..n
 m2=0..n
 </panel_attributes>
     <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>247</x>
+      <y>26</y>
+      <w>273</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>FinType
+--
+id: int
+Name: string
+ListPrice :</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>143</y>
+      <w>65</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>234</x>
+      <y>247</y>
+      <w>273</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>FineLine
+--
+id: int
+Quantity: int
+UnitPrice:int</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

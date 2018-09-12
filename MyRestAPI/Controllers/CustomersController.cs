@@ -30,7 +30,9 @@ namespace MyRestAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Customer> Get(int id)
         {
-            return _customerService.FindCustomerById(id);
+            //return _customerService.FindCustomerById(id);
+
+            return _customerService.FindCustomerByIdIncludeOrders(id);
         }
 
         // POST api/Customers
