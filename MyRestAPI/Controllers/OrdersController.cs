@@ -23,18 +23,35 @@ namespace MyRestAPI.Controllers
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Order>> Get()
+        public ActionResult<IEnumerable<Order>> Get([FromQuery] Filter filter)
         {
+            try
+            {
+                return Ok(_orderService.GetFilteredOrder(filter));
+            }
+            catch (Exception e)
+            {
 
-            return _orderService.GetAllOrders();
+                return BadRequest(e.Message);
+            }
+
+            //return Ok(_orderService.GetAllOrders());
         }
 
         // GET api/Orders/5
         [HttpGet("{id}")]
         public ActionResult<Order> Get(int id)
         {
-            if (id < 1) return BadRequest("Order must be greater than 0");
-            return _orderService.GetOrderById(id);
+            try
+            {
+                return _orderService.GetOrderById(id);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
         }
 
         // POST api/Orders
@@ -43,12 +60,12 @@ namespace MyRestAPI.Controllers
         {
             try
             {
-            return _orderService.CreateOrder(order);
+                return _orderService.CreateOrder(order);
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
-                
+
             }
 
 
@@ -60,7 +77,16 @@ namespace MyRestAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult<Order> Put(int id, [FromBody] Order order)
         {
-            return _orderService.UpdateOrder(order);
+            try
+            {
+                return _orderService.UpdateOrder(order);
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
 
         }
 
@@ -68,13 +94,16 @@ namespace MyRestAPI.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Order> Delete(int id)
         {
-
-            var order = _orderService.DeleteOrder(id);
-            if (order == null)
+            try
             {
-                return StatusCode(404, "Did not found order with id: " + id);
+                return _orderService.DeleteOrder(id);
             }
-            return Ok($"Order with Id: {id} is Deleted");
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
         }
 
 

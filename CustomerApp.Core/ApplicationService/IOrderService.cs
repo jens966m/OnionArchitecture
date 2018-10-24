@@ -19,7 +19,6 @@ namespace CustomerApp.Core.ApplicationService
         Order UpdateOrder(Order updateOrder);
         //Delete
         Order DeleteOrder(int id);
-
-
+        List<Order> GetFilteredOrder(Filter filter);
     }
 }

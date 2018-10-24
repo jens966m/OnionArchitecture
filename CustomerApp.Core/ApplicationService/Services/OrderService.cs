@@ -39,7 +39,7 @@ namespace CustomerApp.Core.ApplicationService.Services
         public Order DeleteOrder(int id)
         {
             if (_orderRepository.ReadById(id) is null)
-                throw new InvalidDataException("Order does not exists");
+                throw new InvalidDataException($"Order with id: {id} does not exists");
                 return _orderRepository.Delete(id);
         }
 
@@ -68,6 +68,19 @@ namespace CustomerApp.Core.ApplicationService.Services
                 throw new InvalidDataException("Order needs date");
 
             return _orderRepository.Update(updateOrder);
+        }
+
+        public List<Order> GetFilteredOrder(Filter filter)
+        {
+            if (filter.CurrentPage <0 || filter.ItemsPrPage<0)
+            {
+                throw new InvalidDataException("CurrentPage and ItemsPage must be zero or more");
+            }
+            if ((filter.CurrentPage-1*filter.ItemsPrPage)>=_orderRepository.Count())
+            {
+                throw new InvalidDataException("Index Out of Bounds, CurrentPAge is too high");
+            }
+            return _orderRepository.ReadAll(filter).ToList();
         }
     }
 }

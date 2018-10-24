@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
-      <y>559</y>
+      <x>780</x>
+      <y>546</y>
       <w>273</w>
       <h>130</h>
     </coordinates>
@@ -21,8 +21,8 @@ LastName: string
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>221</x>
-      <y>559</y>
+      <x>299</x>
+      <y>546</y>
       <w>273</w>
       <h>156</h>
     </coordinates>
@@ -40,12 +40,12 @@ ZipCode: string
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>715</x>
-      <y>260</y>
+      <x>793</x>
+      <y>247</y>
       <w>273</w>
       <h>130</h>
     </coordinates>
-    <panel_attributes>Fine
+    <panel_attributes>BødeTilskrivelse / Fine
 --
 id: int
 FineDate: DateTime
@@ -55,8 +55,8 @@ PayDate : DateTime</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>481</x>
-      <y>611</y>
+      <x>559</x>
+      <y>598</y>
       <w>247</w>
       <h>65</h>
     </coordinates>
@@ -69,8 +69,8 @@ m2=0..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>806</x>
-      <y>377</y>
+      <x>884</x>
+      <y>364</y>
       <w>65</w>
       <h>208</h>
     </coordinates>
@@ -83,8 +83,8 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>494</x>
-      <y>273</y>
+      <x>572</x>
+      <y>260</y>
       <w>247</w>
       <h>65</h>
     </coordinates>
@@ -97,8 +97,8 @@ m2=0..n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>247</x>
-      <y>26</y>
+      <x>325</x>
+      <y>13</y>
       <w>273</w>
       <h>130</h>
     </coordinates>
@@ -112,8 +112,8 @@ ListPrice :</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>143</y>
+      <x>429</x>
+      <y>130</y>
       <w>65</w>
       <h>130</h>
     </coordinates>
@@ -126,8 +126,8 @@ m2=0..n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>234</x>
-      <y>247</y>
+      <x>312</x>
+      <y>234</y>
       <w>273</w>
       <h>130</h>
     </coordinates>

@@ -5,15 +5,19 @@ using System.Threading.Tasks;
 using CustomerApp.Core.ApplicationService;
 using CustomerApp.Core.ApplicationService.Services;
 using CustomerApp.Core.DomainService;
-using CustomerApp.Infrastructure.Static.Data.Repositories;
+using CustomerApp.Infrastructure.Data;
+using CustomerApp.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MyRestAPI
 {
@@ -29,12 +33,29 @@ namespace MyRestAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           // services.AddDbContext<CustomerAppContext>(option=>option.UseInMemoryDatabase("ThaDB")); //in memoryDB
+
+            services.AddDbContext<CustomerAppContext>(options => options.UseSqlite("Data Source=customerApp.db"));
+
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 
+            services.AddScoped<IFineRepository, FineRepository>();
+            services.AddScoped<IFineService, FineService>();
+
+            services.AddScoped<IFineTypeRepository, FineTypeRepository>();
+            services.AddScoped<IFineTypeService, FineTypeService>();
+
+            services.AddScoped<IFineLineRepository, FineLineRepository>();
+            services.AddScoped<IFineLineService, FineLineService>();
+
+
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -45,6 +66,16 @@ namespace MyRestAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                //for in memorydb
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<CustomerAppContext>();
+                    DBseed.SeedDB(ctx);
+
+
+
+                }
             }
             else
             {

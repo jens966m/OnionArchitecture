@@ -30,21 +30,35 @@ namespace MyRestAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Customer> Get(int id)
         {
+            //try
+            //{
             //return _customerService.FindCustomerById(id);
+            //}
+            //catch (Exception e)
+            //{
 
-            return _customerService.FindCustomerByIdIncludeOrders(id);
+            //    throw BadRequest(e.Message);
+            //}
+
+
+            //return _customerService.FindCustomerByIdIncludeOrders(id);
+            return _customerService.FindCustomerByIdIncludeFines(id);
         }
 
         // POST api/Customers
         [HttpPost]
         public ActionResult<Customer> Post([FromBody] Customer cust)
         {
-            if (string.IsNullOrEmpty(cust.FirstName)||string.IsNullOrEmpty(cust.LastName)||string.IsNullOrEmpty(cust.Address))
+            try
             {
-                return BadRequest("missing field");
+                return _customerService.CreateCustomer(cust);
             }
-            
-           return _customerService.CreateCustomer(cust);
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
 
         }
 
@@ -64,7 +78,7 @@ namespace MyRestAPI.Controllers
         // DELETE api/Customers/5
         [HttpDelete("{id}")]
         public ActionResult<Customer> Delete(int id)
-        {
+        {// delete virker ikke efter hensigten
 
             var customer = _customerService.DeleteCustomer(id);
             if (customer ==null)

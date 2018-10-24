@@ -10,9 +10,9 @@ namespace CustomerApp.Core.DomainService
         Order Create(Order order);
 
         Order ReadById(int id);
-        IEnumerable<Order> ReadAll();
+        IEnumerable<Order> ReadAll(Filter filter=null);
         Order Update(Order order);
         Order Delete(int id);
-        
+        int Count();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using CustomerApp.Core.DomainService;
@@ -29,7 +30,11 @@ namespace CustomerApp.Core.ApplicationService.Services
         }
         public Customer CreateCustomer(Customer cust)
         {
-            return _customerRepo.Create(cust);
+            if (string.IsNullOrEmpty(cust.FirstName) || string.IsNullOrEmpty(cust.LastName) || string.IsNullOrEmpty(cust.Address))
+            {
+                throw new InvalidDataException("Missing fields");
+            }
+                return _customerRepo.Create(cust);
 
 
         }
@@ -71,8 +76,13 @@ namespace CustomerApp.Core.ApplicationService.Services
 
         public Customer FindCustomerByIdIncludeOrders(int id)
         {
-            var customer = _customerRepo.ReadyById(id);
-            customer.Orders = _orderRepo.ReadAll().Where(order => order.Customer.Id == customer.Id).ToList();
+            var customer = _customerRepo.ReadyByIdIncludeOrders(id);
+            return customer;
+        }
+
+        public Customer FindCustomerByIdIncludeFines(int id)
+        {
+            var customer = _customerRepo.ReadByIdIncludeFines(id);
             return customer;
         }
     }
