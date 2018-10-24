@@ -2,51 +2,75 @@
 using CustomerApp.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CustomerApp.Infrastructure.Static.Data.Repositories
 {
     public class CustomerRepository: ICustomerRepository
     {
-        static int id = 1;
-        private List<Customer> _customers = new List<Customer>();
+
+        public CustomerRepository()
+        {
+            if (FakeDB.Customers.Count >= 1) return;
+            var cust1 = new Customer()
+            {
+                Id = FakeDB.Id++,
+                FirstName = "Bob",
+                LastName = "Dylan",
+                Address = "BongoStreet 202"
+            };
+            FakeDB.Customers.Add(cust1);
+
+            var cust2 = new Customer()
+            {
+                Id = FakeDB.Id++,
+                FirstName = "Lars",
+                LastName = "Bilde",
+                Address = "Ostestrasse 202"
+            };
+            FakeDB.Customers.Add(cust2);
+        }
+
+
 
         public Customer Create(Customer customer)
         {
-            customer.Id = id++;
-            _customers.Add(customer);
+            customer.Id = FakeDB.Id++;
+            FakeDB.Customers.Add(customer);
 
             return customer;
         }
 
         public Customer Delete(int id)
         {
-            var customerFound = this.ReadyById(id);
-            if (customerFound!=null)
-            {
-                _customers.Remove(customerFound);
-            }
+            var customerFound = ReadyById(id);
+            if (customerFound == null) return null;
+
+            FakeDB.Customers.Remove(customerFound);
             return customerFound;
 
         }
 
         public IEnumerable<Customer> ReadAll()
         {
-            return _customers;
+            return FakeDB.Customers;
+
+
         }
 
         public Customer ReadyById(int id)
         {
-            foreach (var customer in _customers)
-            {
-                if (customer.Id==id)
-                {
-                    return customer;
 
-                }
-                
-            }
-            return null;
+            return FakeDB.Customers.
+                Select(x => new Customer()
+                {
+                    Id = x.Id,
+                    Address = x.Address,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                }).FirstOrDefault(x => x.Id == id);
+
 
         }
 
@@ -55,6 +79,7 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
             var customerFromDB = this.ReadyById(customerUpdate.Id);
             if (customerFromDB != null)
             {
+                
                 customerFromDB.FirstName = customerUpdate.FirstName;
                 customerFromDB.LastName = customerUpdate.LastName;
                 customerFromDB.Address = customerUpdate.Address;

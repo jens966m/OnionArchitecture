@@ -15,6 +15,8 @@ namespace CustomerApp.Core.ApplicationService
 
         //read
         Customer FindCustomerById(int id);
+        Customer FindCustomerByIdIncludeOrders(int id);
+        Customer FindCustomerByIdIncludeFines(int id);
         List<Customer> GetAllCustomers();
         List<Customer> GetAllByFirstName(string name);
 
@@ -23,16 +25,6 @@ namespace CustomerApp.Core.ApplicationService
 
         //Delete
         Customer DeleteCustomer(int id);
-
-
-
-
-
-
-
-
-
-
-
+       
     }
 }

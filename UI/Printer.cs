@@ -14,7 +14,6 @@ namespace BildeConsole
         public Printer(ICustomerService customerService)
         {
             _customerService = customerService;
-            // TEST
             DataInit();
         }
 
@@ -138,14 +137,6 @@ namespace BildeConsole
         #endregion
 
 
-
-
-
-
-
-
-
-
         #region Infrastructure
         void DataInit()
         {
@@ -166,15 +157,5 @@ namespace BildeConsole
             _customerService.CreateCustomer(cust2);
         }
         #endregion
-
-
-
-
-
-
-
-
-
-
     }
 }
