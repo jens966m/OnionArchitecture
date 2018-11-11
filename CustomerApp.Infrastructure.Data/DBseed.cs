@@ -31,28 +31,6 @@ namespace CustomerApp.Infrastructure.Data
                 LastName = "dideriksen2",
             }).Entity;
 
-            ctx.Orders.Add(new Order()
-            {
-                Customer = cust1,
-
-                OrderDate = DateTime.Now,
-                DeliveryDate = DateTime.Now.AddDays(7),
-            });
-
-            ctx.Orders.Add(new Order()
-            {
-                Customer = cust1,
-                OrderDate = DateTime.Now,
-                DeliveryDate = DateTime.Now.AddDays(7),
-            });
-
-            ctx.Orders.Add(new Order()
-            {
-                Customer = cust2,
-                OrderDate = DateTime.Now,
-                DeliveryDate = DateTime.Now.AddDays(7),
-            });
-
             var fineType1 = ctx.FineTypes.Add(new FineType()
             {
                 ListPrice = 10,
@@ -66,7 +44,7 @@ namespace CustomerApp.Infrastructure.Data
 
             var fine1 = ctx.Fines.Add(new Fine()
             {
-                Customer = cust1,
+                Member = cust1,
                 FineDate = DateTime.Now,
                 FineType = fineType1.Entity,
                 
@@ -75,14 +53,14 @@ namespace CustomerApp.Infrastructure.Data
 
             var fine2 = ctx.Fines.Add(new Fine()
             {
-                Customer = cust1,
+                Member = cust1,
                 FineDate = DateTime.Now,
                 FineType = fineType2.Entity,
             });
 
             var fine3 = ctx.Fines.Add(new Fine()
             {
-                Customer = cust2,
+                Member = cust2,
                 FineDate = DateTime.Now,
                 FineType = fineType1.Entity,
             });

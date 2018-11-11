@@ -12,7 +12,6 @@ namespace CustomerApp.Core.DomainService
         IEnumerable<Member> ReadAll();
         Member Update(Member customerUpdate);
         Member Delete(int id);
-        Member ReadyByIdIncludeOrders(int id);
         Member ReadByIdIncludeFines(int id);
     }
 }

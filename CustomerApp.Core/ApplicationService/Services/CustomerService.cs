@@ -11,11 +11,11 @@ namespace CustomerApp.Core.ApplicationService.Services
     public class CustomerService : ICustomerService
     {
         readonly ICustomerRepository _customerRepo;
-        readonly IOrderRepository _orderRepo;
-        public CustomerService( ICustomerRepository customerRepository, IOrderRepository orderRepository)
+        //readonly IOrderRepository _orderRepo;
+        public CustomerService( ICustomerRepository customerRepository/*, IOrderRepository orderRepository*/)
         {
          _customerRepo = customerRepository;
-            _orderRepo = orderRepository;
+            //_orderRepo = orderRepository;
 
         }
         public Member NewCustomer(string firstName, string lastName, string address)
@@ -71,12 +71,6 @@ namespace CustomerApp.Core.ApplicationService.Services
         public Member DeleteCustomer(int id)
         {
             return _customerRepo.Delete(id);
-        }
-
-        public Member FindCustomerByIdIncludeOrders(int id)
-        {
-            var customer = _customerRepo.ReadyByIdIncludeOrders(id);
-            return customer;
         }
 
         public Member FindCustomerByIdIncludeFines(int id)

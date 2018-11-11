@@ -40,8 +40,8 @@ namespace MyRestAPI
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
 
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            //services.AddScoped<IOrderService, OrderService>();
+            //services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddScoped<IFineRepository, FineRepository>();
             services.AddScoped<IFineService, FineService>();

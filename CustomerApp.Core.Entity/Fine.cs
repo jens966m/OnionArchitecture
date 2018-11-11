@@ -9,7 +9,7 @@ namespace CustomerApp.Core.Entity
         public int Id { get; set; }
         public DateTime FineDate { get; set; }
         public DateTime PayDate { get; set; }
-        public Member Customer { get; set; }
+        public Member Member { get; set; }
         public FineType FineType { get; set; }
         //public List<FineLine> FineLines { get; set; }
     }

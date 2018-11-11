@@ -42,11 +42,11 @@ namespace CustomerApp.Infrastructure.Data.Repositories
             if (filter == null)
             {
                 return _context.Fines
-                    .Include(c => c.Customer)
+                    .Include(c => c.Member)
                     .Include(x => x.FineType);                    ;
             }
             return _context.Fines
-                 .Include(c => c.Customer)
+                 .Include(c => c.Member)
                  .Include(x => x.FineType)
                 .Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
                 .Take(filter.ItemsPrPage);
@@ -61,7 +61,7 @@ namespace CustomerApp.Infrastructure.Data.Repositories
         {
             return _context.Fines
                 .Include(x => x.FineType)
-                .Include(x=>x.Customer)
+                .Include(x=>x.Member)
                 .FirstOrDefault(x=>x.Id==id);
 
 
@@ -70,7 +70,7 @@ namespace CustomerApp.Infrastructure.Data.Repositories
         public Fine Update(Fine fineUpdate)
         {
             _context.Attach(fineUpdate).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            _context.Entry(fineUpdate).Reference(o => o.Customer).IsModified = true;
+            _context.Entry(fineUpdate).Reference(o => o.Member).IsModified = true;
             _context.SaveChangesAsync();
             return fineUpdate;
         }
