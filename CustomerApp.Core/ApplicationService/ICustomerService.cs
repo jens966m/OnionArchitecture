@@ -8,23 +8,23 @@ namespace CustomerApp.Core.ApplicationService
     public interface ICustomerService
     {
         //New Customer
-        Customer NewCustomer(string firstName, string lastName, string address);
+        Member NewCustomer(string firstName, string lastName, string address);
 
         //Create
-        Customer CreateCustomer(Customer cust);
+        Member CreateCustomer(Member cust);
 
         //read
-        Customer FindCustomerById(int id);
-        Customer FindCustomerByIdIncludeOrders(int id);
-        Customer FindCustomerByIdIncludeFines(int id);
-        List<Customer> GetAllCustomers();
-        List<Customer> GetAllByFirstName(string name);
+        Member FindCustomerById(int id);
+        Member FindCustomerByIdIncludeOrders(int id);
+        Member FindCustomerByIdIncludeFines(int id);
+        List<Member> GetAllCustomers();
+        List<Member> GetAllByFirstName(string name);
 
         //Update
-        Customer UpdateCustomer(Customer customerUpdate);
+        Member UpdateCustomer(Member customerUpdate);
 
         //Delete
-        Customer DeleteCustomer(int id);
+        Member DeleteCustomer(int id);
        
     }
 }

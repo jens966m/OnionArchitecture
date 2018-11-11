@@ -9,7 +9,7 @@ namespace CustomerApp.Core.DomainService
     {
         Fine Create(Fine fine);
         Fine ReadById(int id);
-        Fine ReadByIdIncludeFines(int id);
+        Fine ReadByIdIncludeType(int id);
         IEnumerable<Fine> ReadAll(Filter filter = null);
         Fine Update(Fine fineUpdate);
         Fine Delete(int id);

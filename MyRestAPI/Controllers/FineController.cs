@@ -31,7 +31,7 @@ namespace MyRestAPI.Controllers
         public ActionResult<Fine> Get(int id)
         {
 
-            return _fineService.FindFineByIdIncludeFineLines(id);
+            return _fineService.FindFineByIdIncludeFineType(id);
         }
 
         // POST api/Fines

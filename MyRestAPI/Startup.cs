@@ -49,8 +49,8 @@ namespace MyRestAPI
             services.AddScoped<IFineTypeRepository, FineTypeRepository>();
             services.AddScoped<IFineTypeService, FineTypeService>();
 
-            services.AddScoped<IFineLineRepository, FineLineRepository>();
-            services.AddScoped<IFineLineService, FineLineService>();
+            //services.AddScoped<IFineLineRepository, FineLineRepository>();
+            //services.AddScoped<IFineLineService, FineLineService>();
 
 
             services.AddMvc().AddJsonOptions(options => {

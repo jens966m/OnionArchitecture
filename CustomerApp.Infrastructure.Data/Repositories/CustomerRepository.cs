@@ -16,34 +16,34 @@ namespace CustomerApp.Infrastructure.Data.Repositories
         {
             _context = context;
         }
-        public Customer Create(Customer customer)
+        public Member Create(Member customer)
         {
             var cust = _context.Customers.Add(customer).Entity;
             _context.SaveChangesAsync();
             return cust;
         }
 
-        public Customer Delete(int id)
+        public Member Delete(int id)
         {
-            var custRemoved = _context.Remove(new Customer() { Id = id }).Entity;
+            var custRemoved = _context.Remove(new Member() { id = id }).Entity;
             _context.SaveChangesAsync();
             return custRemoved;
         }
 
-        public IEnumerable<Customer> ReadAll()
+        public IEnumerable<Member> ReadAll()
         {
             return _context.Customers;
         }
 
-        public Customer ReadyById(int id)
+        public Member ReadyById(int id)
         {
             var changeTracker = _context.ChangeTracker.Entries();
-            return _context.Customers.FirstOrDefault(x => x.Id == id);
+            return _context.Customers.FirstOrDefault(x => x.id == id);
         }
 
 
 
-        public Customer Update(Customer customerUpdate)
+        public Member Update(Member customerUpdate)
         {
 
             var cust = _context.Customers.Update(customerUpdate).Entity;
@@ -51,15 +51,17 @@ namespace CustomerApp.Infrastructure.Data.Repositories
             return cust;
         }
 
-        public Customer ReadyByIdIncludeOrders(int id)
+        public Member ReadyByIdIncludeOrders(int id)
         {
-            return _context.Customers.Include(c => c.Orders).FirstOrDefault(c => c.Id == id);
+            return _context.Customers
+                .Include(c => c.Orders)
+                .FirstOrDefault(c => c.id == id);
         }
-        public Customer ReadByIdIncludeFines(int id) 
+        public Member ReadByIdIncludeFines(int id) 
         {
             return _context.Customers
                             .Include(c => c.Fines)
-                            .FirstOrDefault(c => c.Id == id);
+                            .FirstOrDefault(c => c.id == id);
         }
 
     }
