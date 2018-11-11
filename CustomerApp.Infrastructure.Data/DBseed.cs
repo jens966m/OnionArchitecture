@@ -10,6 +10,7 @@ namespace CustomerApp.Infrastructure.Data
 
         public static void SeedDB(CustomerAppContext ctx)
         {
+            //test git
             //ctx.Database.EnsureDeleted(); // only in devMODE ! ! ! 
             ctx.Database.EnsureCreated();
             var cust1 = ctx.Customers.Add(new Member()
