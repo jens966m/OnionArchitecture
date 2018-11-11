@@ -63,6 +63,7 @@ namespace CustomerApp.Core.ApplicationService.Services
             customer.FirstName = customerUpdate.FirstName;
             customer.LastName = customerUpdate.LastName;
             customer.Address =customerUpdate.Address;
+            _customerRepo.Update(customer);
             return customer;
 
 
