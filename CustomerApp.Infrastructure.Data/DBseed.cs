@@ -12,7 +12,7 @@ namespace CustomerApp.Infrastructure.Data
         {
             ctx.Database.EnsureDeleted(); // only in devMODE ! ! ! 
             ctx.Database.EnsureCreated();
-            var cust1 = ctx.Customers.Add(new Member()
+            var cust1 = ctx.Members.Add(new Member()
 
             {
                 // Id = 1,
@@ -22,7 +22,7 @@ namespace CustomerApp.Infrastructure.Data
             }).Entity;
 
 
-            var cust2 = ctx.Customers.Add(new Member()
+            var cust2 = ctx.Members.Add(new Member()
 
             {
                 // Id = 2,

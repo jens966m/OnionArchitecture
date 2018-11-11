@@ -15,11 +15,6 @@ namespace CustomerApp.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Order>()
-            //    .HasOne(o => o.Customer)
-            //    .WithMany(c => c.Orders)
-            //    .OnDelete(DeleteBehavior.SetNull);
-
             modelBuilder.Entity<Fine>()
                 .HasOne(f => f.Customer)
                 .WithMany(c => c.Fines)
@@ -28,21 +23,9 @@ namespace CustomerApp.Infrastructure.Data
                 .HasOne(x => x.FineType)
                 .WithMany()
                 .OnDelete(DeleteBehavior.SetNull);
-            //modelBuilder.Entity<FineLine>()
-            //    .HasOne(x => x.FineType)
-            //    .WithMany()
-            //    .OnDelete(DeleteBehavior.SetNull);
-            //modelBuilder.Entity<FineLine>()
-            //    .HasOne(x => x.Fine)
-            //    .WithMany();
-
-            //modelBuilder.Entity<Fine>()
-            //    .HasOne(f => f.Customer)
-            //    .WithMany(f => f.Fines)
-            //    .OnDelete(DeleteBehavior.SetNull);
         }
-        public DbSet<Member> Customers { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Order> Orders { get; set; } // needs to be deleted
         public DbSet<Fine> Fines { get; set; } // bødetilskrivelse
         //public DbSet<FineLine> FineLines { get; set; }
         public DbSet<FineType> FineTypes { get; set; }
