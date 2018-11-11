@@ -10,15 +10,15 @@ namespace CustomerApp.Infrastructure.Data
 
         public static void SeedDB(CustomerAppContext ctx)
         {
-            ctx.Database.EnsureDeleted(); // only in devMODE ! ! ! 
+            //ctx.Database.EnsureDeleted(); // only in devMODE ! ! ! 
             ctx.Database.EnsureCreated();
             var cust1 = ctx.Customers.Add(new Member()
 
             {
                 // Id = 1,
-                address = "Bispevej",
-                firstName = "jens",
-                lastName = "dideriksen",
+                Address = "Bispevej",
+                FirstName = "jens",
+                LastName = "dideriksen",
             }).Entity;
 
 
@@ -26,9 +26,9 @@ namespace CustomerApp.Infrastructure.Data
 
             {
                 // Id = 2,
-                address = "Bispevej2",
-                firstName = "jens2",
-                lastName = "dideriksen2",
+                Address = "Bispevej2",
+                FirstName = "jens2",
+                LastName = "dideriksen2",
             }).Entity;
 
             ctx.Orders.Add(new Order()

@@ -67,7 +67,7 @@ namespace MyRestAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult<Member> Put(int id, [FromBody] Member cust)
         {
-            if (id<0||id !=cust.id)
+            if (id<0||id !=cust.Id)
             {
                 return BadRequest("parameter id and customer id must be a match");
             }

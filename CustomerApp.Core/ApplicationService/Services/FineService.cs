@@ -21,9 +21,9 @@ namespace CustomerApp.Core.ApplicationService.Services
 
         public Fine CreateFine(Fine fine)
         {
-            if (fine.Customer is null || fine.Customer.id <= 0)
+            if (fine.Customer is null || fine.Customer.Id <= 0)
                 throw new InvalidDataException("To create a fine you need a customer");
-            if (_customerRepository.ReadyById(fine.Customer.id) == null)
+            if (_customerRepository.ReadyById(fine.Customer.Id) == null)
                 throw new InvalidDataException("Fine not found");
             if (fine.FineDate == null)
                 throw new InvalidDataException("Fine needs date");
@@ -78,9 +78,9 @@ namespace CustomerApp.Core.ApplicationService.Services
         {
 
 
-            if (updateFine.Customer is null || updateFine.Customer.id <= 0)
+            if (updateFine.Customer is null || updateFine.Customer.Id <= 0)
                 throw new InvalidDataException("To create a fine der you need a customer");
-            if (_customerRepository.ReadyById(updateFine.Customer.id) == null)
+            if (_customerRepository.ReadyById(updateFine.Customer.Id) == null)
                 throw new InvalidDataException("Fine not found");
             if (updateFine.FineDate == null)
                 throw new InvalidDataException("Fine needs date");

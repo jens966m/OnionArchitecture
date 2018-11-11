@@ -22,15 +22,15 @@ namespace CustomerApp.Core.ApplicationService.Services
         {
             var customer = new Member
             {
-                firstName = firstName,
-                lastName = lastName,
-                address = address,
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
             };
             return customer;
         }
         public Member CreateCustomer(Member cust)
         {
-            if (string.IsNullOrEmpty(cust.firstName) || string.IsNullOrEmpty(cust.lastName) || string.IsNullOrEmpty(cust.address))
+            if (string.IsNullOrEmpty(cust.FirstName) || string.IsNullOrEmpty(cust.LastName) || string.IsNullOrEmpty(cust.Address))
             {
                 throw new InvalidDataException("Missing fields");
             }
@@ -49,7 +49,7 @@ namespace CustomerApp.Core.ApplicationService.Services
 
         public List<Member> GetAllByFirstName(string name)
         {
-            var list = _customerRepo.ReadAll().Where(x => x.firstName == name);
+            var list = _customerRepo.ReadAll().Where(x => x.FirstName == name);
             //list.OrderBy(x => x.FirstName = name);
 
             return list.ToList();
@@ -59,10 +59,10 @@ namespace CustomerApp.Core.ApplicationService.Services
         public Member UpdateCustomer(Member customerUpdate)
         {
 
-            var customer = FindCustomerById(customerUpdate.id);
-            customer.firstName = customerUpdate.firstName;
-            customer.lastName = customerUpdate.lastName;
-            customer.address =customerUpdate.address;
+            var customer = FindCustomerById(customerUpdate.Id);
+            customer.FirstName = customerUpdate.FirstName;
+            customer.LastName = customerUpdate.LastName;
+            customer.Address =customerUpdate.Address;
             return customer;
 
 

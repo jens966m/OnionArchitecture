@@ -35,7 +35,7 @@ namespace MyRestAPI
         {
            // services.AddDbContext<CustomerAppContext>(option=>option.UseInMemoryDatabase("ThaDB")); //in memoryDB
 
-            services.AddDbContext<CustomerAppContext>(options => options.UseSqlite("Data Source=customerApp.db"));
+            services.AddEntityFrameworkSqlite().AddDbContext<CustomerAppContext>(options => options.UseSqlite("Data Source=customerApp.db"));
 
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
@@ -48,10 +48,6 @@ namespace MyRestAPI
 
             services.AddScoped<IFineTypeRepository, FineTypeRepository>();
             services.AddScoped<IFineTypeService, FineTypeService>();
-
-            //services.AddScoped<IFineLineRepository, FineLineRepository>();
-            //services.AddScoped<IFineLineService, FineLineService>();
-
 
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -72,14 +68,16 @@ namespace MyRestAPI
                 {
                     var ctx = scope.ServiceProvider.GetService<CustomerAppContext>();
                     DBseed.SeedDB(ctx);
-
-
-
                 }
             }
             else
             {
                 app.UseHsts();
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<CustomerAppContext>();
+                    DBseed.SeedDB(ctx);
+                }
             }
 
            //app.UseHttpsRedirection();

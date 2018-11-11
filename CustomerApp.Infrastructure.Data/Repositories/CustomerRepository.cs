@@ -25,7 +25,7 @@ namespace CustomerApp.Infrastructure.Data.Repositories
 
         public Member Delete(int id)
         {
-            var custRemoved = _context.Remove(new Member() { id = id }).Entity;
+            var custRemoved = _context.Remove(new Member() { Id = id }).Entity;
             _context.SaveChangesAsync();
             return custRemoved;
         }
@@ -38,7 +38,7 @@ namespace CustomerApp.Infrastructure.Data.Repositories
         public Member ReadyById(int id)
         {
             var changeTracker = _context.ChangeTracker.Entries();
-            return _context.Customers.FirstOrDefault(x => x.id == id);
+            return _context.Customers.FirstOrDefault(x => x.Id == id);
         }
 
 
@@ -55,13 +55,13 @@ namespace CustomerApp.Infrastructure.Data.Repositories
         {
             return _context.Customers
                 .Include(c => c.Orders)
-                .FirstOrDefault(c => c.id == id);
+                .FirstOrDefault(c => c.Id == id);
         }
         public Member ReadByIdIncludeFines(int id) 
         {
             return _context.Customers
                             .Include(c => c.Fines)
-                            .FirstOrDefault(c => c.id == id);
+                            .FirstOrDefault(c => c.Id == id);
         }
 
     }
