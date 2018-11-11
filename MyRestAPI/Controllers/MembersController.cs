@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using CustomerApp.Core.ApplicationService;
 using CustomerApp.Core.Entity;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyRestAPI.Controllers
 {
+    [EnableCors("MyPolicy")]
     [Route("api/[controller]")]
     [ApiController]
+
 
     public class MembersController : ControllerBase
     {
