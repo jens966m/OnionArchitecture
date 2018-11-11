@@ -7,12 +7,12 @@ namespace CustomerApp.Core.DomainService
 {
     public interface ICustomerRepository
     {
-        Customer Create(Customer customer);
-        Customer ReadyById(int id);
-        IEnumerable<Customer> ReadAll();
-        Customer Update(Customer customerUpdate);
-        Customer Delete(int id);
-        Customer ReadyByIdIncludeOrders(int id);
-        Customer ReadByIdIncludeFines(int id);
+        Member Create(Member customer);
+        Member ReadyById(int id);
+        IEnumerable<Member> ReadAll();
+        Member Update(Member customerUpdate);
+        Member Delete(int id);
+        Member ReadyByIdIncludeOrders(int id);
+        Member ReadByIdIncludeFines(int id);
     }
 }

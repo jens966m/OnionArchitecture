@@ -25,26 +25,26 @@ namespace CustomerApp.Infrastructure.Data
                 .WithMany(c => c.Fines)
                 .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Fine>()
-                .HasMany(f => f.FineLines)
-                .WithOne()
-                .OnDelete(DeleteBehavior.SetNull);
-            modelBuilder.Entity<FineLine>()
                 .HasOne(x => x.FineType)
                 .WithMany()
                 .OnDelete(DeleteBehavior.SetNull);
-            modelBuilder.Entity<FineLine>()
-                .HasOne(x => x.Fine)
-                .WithMany();
+            //modelBuilder.Entity<FineLine>()
+            //    .HasOne(x => x.FineType)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.SetNull);
+            //modelBuilder.Entity<FineLine>()
+            //    .HasOne(x => x.Fine)
+            //    .WithMany();
 
             //modelBuilder.Entity<Fine>()
             //    .HasOne(f => f.Customer)
             //    .WithMany(f => f.Fines)
             //    .OnDelete(DeleteBehavior.SetNull);
         }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Member> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Fine> Fines { get; set; } // bødetilskrivelse
-        public DbSet<FineLine> FineLines { get; set; }
+        //public DbSet<FineLine> FineLines { get; set; }
         public DbSet<FineType> FineTypes { get; set; }
 
 

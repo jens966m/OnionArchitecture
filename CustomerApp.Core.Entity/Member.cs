@@ -4,15 +4,16 @@ using System.Text;
 
 namespace CustomerApp.Core.Entity
 {
-    public class Customer
+    public class Member
     {
-        public int Id { get; set; }
+        public int id { get; set; }
 
-        public string FirstName { get; set; }
+        public string firstName { get; set; }
 
-        public string LastName { get; set; }
+        public string lastName { get; set; }
 
-        public string Address { get; set; }
+        public string address { get; set; }
+
         public List<Order> Orders { get; set; }
 
         public List<Fine> Fines { get; set; }

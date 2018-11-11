@@ -26,9 +26,9 @@ namespace CustomerApp.Core.ApplicationService.Services
 
         public Order CreateOrder(Order order)
         {
-            if (order.Customer is null || order.Customer.Id <= 0)
+            if (order.Customer is null || order.Customer.id <= 0)
                 throw new InvalidDataException("To create a order you need a customer");
-            if (_customerRepository.ReadyById(order.Customer.Id) == null)
+            if (_customerRepository.ReadyById(order.Customer.id) == null)
                 throw new InvalidDataException("Customer not found");
             if (order.OrderDate == null)
                 throw new InvalidDataException("Order needs date");
@@ -60,9 +60,9 @@ namespace CustomerApp.Core.ApplicationService.Services
         public Order UpdateOrder(Order updateOrder)
         {
 
-            if (updateOrder.Customer is null || updateOrder.Customer.Id <= 0)
+            if (updateOrder.Customer is null || updateOrder.Customer.id <= 0)
                 throw new InvalidDataException("To create a order you need a customer");
-            if (_customerRepository.ReadyById(updateOrder.Customer.Id) == null)
+            if (_customerRepository.ReadyById(updateOrder.Customer.id) == null)
                 throw new InvalidDataException("Customer not found");
             if (updateOrder.OrderDate == null)
                 throw new InvalidDataException("Order needs date");

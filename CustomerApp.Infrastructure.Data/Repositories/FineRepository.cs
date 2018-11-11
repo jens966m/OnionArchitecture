@@ -41,9 +41,14 @@ namespace CustomerApp.Infrastructure.Data.Repositories
         {
             if (filter == null)
             {
-                return _context.Fines;
+                return _context.Fines
+                    .Include(c => c.Customer)
+                    .Include(x => x.FineType);                    ;
             }
-            return _context.Fines.Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
+            return _context.Fines
+                 .Include(c => c.Customer)
+                 .Include(x => x.FineType)
+                .Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
                 .Take(filter.ItemsPrPage);
         }
 
@@ -52,10 +57,12 @@ namespace CustomerApp.Infrastructure.Data.Repositories
             return _context.Fines.FirstOrDefault(fine => fine.Id == id);
         }
 
-        public Fine ReadByIdIncludeFines(int id)
+        public Fine ReadByIdIncludeType(int id)
         {
-            return _context.Fines.Include(x => x.FineLines).Include(x=>x.Customer).FirstOrDefault(f => f.Id == id);
-
+            return _context.Fines
+                .Include(x => x.FineType)
+                .Include(x=>x.Customer)
+                .FirstOrDefault(x=>x.Id==id);
 
 
         }

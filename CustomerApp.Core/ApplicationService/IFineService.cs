@@ -14,7 +14,7 @@ namespace CustomerApp.Core.ApplicationService
         Fine CreateFine(Fine fine);
         //Read Fine
         List<Fine> GetFilteredFine(Filter filter);
-        Fine FindFineByIdIncludeFineLines(int id);
+        Fine FindFineByIdIncludeFineType(int id);
         List<Fine> GetAllFines();
         //Update Fine
         Fine UpdateFine(Fine updateFine);
