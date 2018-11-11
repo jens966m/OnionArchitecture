@@ -10,17 +10,18 @@ namespace MyRestAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+
+    public class MembersController : ControllerBase
     {
         private readonly ICustomerService _customerService;
         
-        public CustomersController(ICustomerService customerService)
+        public MembersController(ICustomerService customerService)
         {
             _customerService = customerService;
         }
         // GET api/Customers
         [HttpGet]
-        public ActionResult<IEnumerable<Customer>> Get()
+        public ActionResult<IEnumerable<Member>> Get()
         {
 
             return _customerService.GetAllCustomers();
@@ -28,7 +29,7 @@ namespace MyRestAPI.Controllers
 
         // GET api/Customers/5
         [HttpGet("{id}")]
-        public ActionResult<Customer> Get(int id)
+        public ActionResult<Member> Get(int id)
         {
             //try
             //{
@@ -47,7 +48,7 @@ namespace MyRestAPI.Controllers
 
         // POST api/Customers
         [HttpPost]
-        public ActionResult<Customer> Post([FromBody] Customer cust)
+        public ActionResult<Member> Post([FromBody] Member cust)
         {
             try
             {
@@ -64,9 +65,9 @@ namespace MyRestAPI.Controllers
 
         // PUT api/Customers/5
         [HttpPut("{id}")]
-        public ActionResult<Customer> Put(int id, [FromBody] Customer cust)
+        public ActionResult<Member> Put(int id, [FromBody] Member cust)
         {
-            if (id<0||id !=cust.Id)
+            if (id<0||id !=cust.id)
             {
                 return BadRequest("parameter id and customer id must be a match");
             }
@@ -77,7 +78,7 @@ namespace MyRestAPI.Controllers
 
         // DELETE api/Customers/5
         [HttpDelete("{id}")]
-        public ActionResult<Customer> Delete(int id)
+        public ActionResult<Member> Delete(int id)
         {// delete virker ikke efter hensigten
 
             var customer = _customerService.DeleteCustomer(id);

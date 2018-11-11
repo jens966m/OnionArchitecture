@@ -18,69 +18,67 @@ namespace CustomerApp.Core.ApplicationService.Services
             _orderRepo = orderRepository;
 
         }
-        public Customer NewCustomer(string firstName, string lastName, string address)
+        public Member NewCustomer(string firstName, string lastName, string address)
         {
-            var customer = new Customer
+            var customer = new Member
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Address = address,
+                firstName = firstName,
+                lastName = lastName,
+                address = address,
             };
             return customer;
         }
-        public Customer CreateCustomer(Customer cust)
+        public Member CreateCustomer(Member cust)
         {
-            if (string.IsNullOrEmpty(cust.FirstName) || string.IsNullOrEmpty(cust.LastName) || string.IsNullOrEmpty(cust.Address))
+            if (string.IsNullOrEmpty(cust.firstName) || string.IsNullOrEmpty(cust.lastName) || string.IsNullOrEmpty(cust.address))
             {
                 throw new InvalidDataException("Missing fields");
             }
                 return _customerRepo.Create(cust);
-
-
         }
 
-        public Customer FindCustomerById(int id)
+        public Member FindCustomerById(int id)
         {
             return _customerRepo.ReadyById(id);
         }
-        public List<Customer> GetAllCustomers()
+        public List<Member> GetAllCustomers()
         {
             return _customerRepo.ReadAll().ToList();
 
         }
 
-        public List<Customer> GetAllByFirstName(string name)
+        public List<Member> GetAllByFirstName(string name)
         {
-            var list = _customerRepo.ReadAll().Where(x => x.FirstName == name);
+            var list = _customerRepo.ReadAll().Where(x => x.firstName == name);
             //list.OrderBy(x => x.FirstName = name);
 
             return list.ToList();
         }
        
 
-        public Customer UpdateCustomer(Customer customerUpdate)
+        public Member UpdateCustomer(Member customerUpdate)
         {
 
-            var customer = FindCustomerById(customerUpdate.Id);
-            customer.FirstName = customerUpdate.FirstName;
-            customer.LastName = customerUpdate.LastName;
-            customer.Address =customerUpdate.Address;
+            var customer = FindCustomerById(customerUpdate.id);
+            customer.firstName = customerUpdate.firstName;
+            customer.lastName = customerUpdate.lastName;
+            customer.address =customerUpdate.address;
             return customer;
 
 
         }
-        public Customer DeleteCustomer(int id)
+        public Member DeleteCustomer(int id)
         {
             return _customerRepo.Delete(id);
         }
 
-        public Customer FindCustomerByIdIncludeOrders(int id)
+        public Member FindCustomerByIdIncludeOrders(int id)
         {
             var customer = _customerRepo.ReadyByIdIncludeOrders(id);
             return customer;
         }
 
-        public Customer FindCustomerByIdIncludeFines(int id)
+        public Member FindCustomerByIdIncludeFines(int id)
         {
             var customer = _customerRepo.ReadByIdIncludeFines(id);
             return customer;

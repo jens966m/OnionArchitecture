@@ -12,23 +12,23 @@ namespace CustomerApp.Infrastructure.Data
         {
             ctx.Database.EnsureDeleted(); // only in devMODE ! ! ! 
             ctx.Database.EnsureCreated();
-            var cust1 = ctx.Customers.Add(new Customer()
+            var cust1 = ctx.Customers.Add(new Member()
 
             {
                 // Id = 1,
-                Address = "Bispevej",
-                FirstName = "jens",
-                LastName = "dideriksen",
+                address = "Bispevej",
+                firstName = "jens",
+                lastName = "dideriksen",
             }).Entity;
 
 
-            var cust2 = ctx.Customers.Add(new Customer()
+            var cust2 = ctx.Customers.Add(new Member()
 
             {
                 // Id = 2,
-                Address = "Bispevej2",
-                FirstName = "jens2",
-                LastName = "dideriksen2",
+                address = "Bispevej2",
+                firstName = "jens2",
+                lastName = "dideriksen2",
             }).Entity;
 
             ctx.Orders.Add(new Order()
@@ -64,21 +64,36 @@ namespace CustomerApp.Infrastructure.Data
                 Name = "Ikke Fremmødt"
             });
 
-
             var fine1 = ctx.Fines.Add(new Fine()
             {
                 Customer = cust1,
                 FineDate = DateTime.Now,
-                FineLines = new List<FineLine>(){ new FineLine() { FineType=fineType1.Entity}, new FineLine() { FineType = fineType2.Entity } },
+                FineType = fineType1.Entity,
+                
 
             });
+
             var fine2 = ctx.Fines.Add(new Fine()
+            {
+                Customer = cust1,
+                FineDate = DateTime.Now,
+                FineType = fineType2.Entity,
+            });
+
+            var fine3 = ctx.Fines.Add(new Fine()
             {
                 Customer = cust2,
                 FineDate = DateTime.Now,
-                FineLines = new List<FineLine>() {new FineLine() { FineType = fineType2.Entity } },
-
+                FineType = fineType1.Entity,
             });
+
+            //var fine2 = ctx.Fines.Add(new Fine()
+            //{
+            //    Customer = cust2,
+            //    FineDate = DateTime.Now,
+            //    FineLines = new List<FineLine>() {new FineLine() { FineType = fineType2.Entity } },
+
+            //});
 
             ctx.SaveChangesAsync();
         }
