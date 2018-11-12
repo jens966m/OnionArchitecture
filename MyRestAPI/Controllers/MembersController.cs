@@ -12,8 +12,6 @@ namespace MyRestAPI.Controllers
     [EnableCors("MyPolicy")]
     [Route("api/[controller]")]
     [ApiController]
-
-
     public class MembersController : ControllerBase
     {
         private readonly ICustomerService _customerService;

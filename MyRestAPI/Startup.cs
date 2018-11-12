@@ -53,7 +53,7 @@ namespace MyRestAPI
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             services.AddCors(o => o.AddPolicy("MyPolicy", builder => {
-                builder.WithOrigins("https://kaffeklubben-5fd40.firebaseapp.com")
+                builder.WithOrigins("https://kaffeklubben-5fd40.firebaseapp.com", "http://localhost:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader();
                 }));
