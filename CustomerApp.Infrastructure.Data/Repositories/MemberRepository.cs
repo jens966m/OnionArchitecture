@@ -8,17 +8,21 @@ using System.Text;
 
 namespace CustomerApp.Infrastructure.Data.Repositories
 {
-    public class CustomerRepository : ICustomerRepository
+    public class MemberRepository : IMemberRepository
     {
         private readonly CustomerAppContext _context;
 
-        public CustomerRepository(CustomerAppContext context)
+        //private readonly MultigroupSpaceDbContext _context;
+
+
+
+        public MemberRepository(CustomerAppContext context)
         {
             _context = context;
         }
-        public Member Create(Member customer)
+        public Member Create(Member member)
         {
-            var cust = _context.Members.Add(customer).Entity;
+            var cust = _context.Members.Add(member).Entity;
             _context.SaveChangesAsync();
             return cust;
         }
@@ -45,12 +49,14 @@ namespace CustomerApp.Infrastructure.Data.Repositories
 
 
 
-        public Member Update(Member customerUpdate)
+        public Member Update(Member memberUpdate)
         {
 
-            var cust = _context.Members.Update(customerUpdate).Entity;
+            var memb = _context.Members.Update(memberUpdate).Entity;
             _context.SaveChangesAsync();
-            return cust;
+            return memb;
+
+           
         }
 
         public Member ReadByIdIncludeFines(int id) 

@@ -11,9 +11,9 @@ namespace CustomerApp.Core.ApplicationService.Services
     public class FineService : IFineService
     {
         private readonly IFineRepository _fineRepository;
-        private readonly ICustomerRepository _customerRepository;
+        private readonly IMemberRepository _customerRepository;
 
-        public FineService(IFineRepository fineRepository, ICustomerRepository customerRepository)
+        public FineService(IFineRepository fineRepository, IMemberRepository customerRepository)
         {
             _customerRepository = customerRepository;
             _fineRepository = fineRepository;

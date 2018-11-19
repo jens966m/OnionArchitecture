@@ -8,40 +8,40 @@ using CustomerApp.Core.Entity;
 
 namespace CustomerApp.Core.ApplicationService.Services
 {
-    public class CustomerService : ICustomerService
+    public class MemberService : IMemberService
     {
-        readonly ICustomerRepository _customerRepo;
+        readonly IMemberRepository _customerRepo;
         //readonly IOrderRepository _orderRepo;
-        public CustomerService( ICustomerRepository customerRepository/*, IOrderRepository orderRepository*/)
+        public MemberService( IMemberRepository customerRepository/*, IOrderRepository orderRepository*/)
         {
          _customerRepo = customerRepository;
             //_orderRepo = orderRepository;
 
         }
-        public Member NewCustomer(string firstName, string lastName, string address)
+        public Member NewMember(string firstName, string lastName, string address)
         {
-            var customer = new Member
+            var member = new Member
             {
                 FirstName = firstName,
                 LastName = lastName,
                 Address = address,
             };
-            return customer;
+            return member;
         }
-        public Member CreateCustomer(Member cust)
+        public Member CreateMember(Member memb)
         {
-            if (string.IsNullOrEmpty(cust.FirstName) || string.IsNullOrEmpty(cust.LastName) || string.IsNullOrEmpty(cust.Address))
+            if (string.IsNullOrEmpty(memb.FirstName) || string.IsNullOrEmpty(memb.LastName) || string.IsNullOrEmpty(memb.Address))
             {
                 throw new InvalidDataException("Missing fields");
             }
-                return _customerRepo.Create(cust);
+                return _customerRepo.Create(memb);
         }
 
-        public Member FindCustomerById(int id)
+        public Member FindMemberById(int id)
         {
             return _customerRepo.ReadyById(id);
         }
-        public List<Member> GetAllCustomers()
+        public List<Member> GetAllMembers()
         {
             return _customerRepo.ReadAll().ToList();
 
@@ -56,24 +56,24 @@ namespace CustomerApp.Core.ApplicationService.Services
         }
        
 
-        public Member UpdateCustomer(Member customerUpdate)
+        public Member UpdateMember(Member memberUpdate)
         {
 
-            var customer = FindCustomerById(customerUpdate.Id);
-            customer.FirstName = customerUpdate.FirstName;
-            customer.LastName = customerUpdate.LastName;
-            customer.Address =customerUpdate.Address;
-            _customerRepo.Update(customer);
-            return customer;
+            var member = FindMemberById(memberUpdate.Id);
+            member.FirstName = memberUpdate.FirstName;
+            member.LastName = memberUpdate.LastName;
+            member.Address =memberUpdate.Address;
+            _customerRepo.Update(member);
+            return member;
 
 
         }
-        public Member DeleteCustomer(int id)
+        public Member DeleteMember(int id)
         {
             return _customerRepo.Delete(id);
         }
 
-        public Member FindCustomerByIdIncludeFines(int id)
+        public Member FindMemberByIdIncludeFines(int id)
         {
             var customer = _customerRepo.ReadByIdIncludeFines(id);
             return customer;

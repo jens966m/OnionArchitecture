@@ -5,12 +5,12 @@ using System.Text;
 
 namespace CustomerApp.Core.DomainService
 {
-    public interface ICustomerRepository
+    public interface IMemberRepository
     {
-        Member Create(Member customer);
+        Member Create(Member member);
         Member ReadyById(int id);
         IEnumerable<Member> ReadAll();
-        Member Update(Member customerUpdate);
+        Member Update(Member memberUpdate);
         Member Delete(int id);
         Member ReadByIdIncludeFines(int id);
     }

@@ -11,6 +11,5 @@ namespace CustomerApp.Core.Entity
         public DateTime PayDate { get; set; }
         public Member Member { get; set; }
         public FineType FineType { get; set; }
-        //public List<FineLine> FineLines { get; set; }
     }
 }

@@ -4,10 +4,10 @@ using System.Text;
 
 namespace CustomerApp.Core.Entity
 {
-    public class FineType
+    public class MemberType
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int ListPrice { get; set; }
+        public List<Member> Members { get; set; }
     }
 }

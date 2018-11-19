@@ -29,11 +29,11 @@ namespace CustomerApp.Infrastructure.Data
             //    .OnDelete(DeleteBehavior.Cascade);
 
         }
+        public DbSet<MemberType> MemberTypes { get; set; }
         public DbSet<Member> Members { get; set; }
-        //public DbSet<Order> Orders { get; set; } // needs to be deleted
         public DbSet<Fine> Fines { get; set; } // bødetilskrivelse
-        //public DbSet<FineLine> FineLines { get; set; }
         public DbSet<FineType> FineTypes { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
 
 
 

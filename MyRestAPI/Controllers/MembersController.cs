@@ -14,18 +14,18 @@ namespace MyRestAPI.Controllers
     [ApiController]
     public class MembersController : ControllerBase
     {
-        private readonly ICustomerService _customerService;
+        private readonly IMemberService _memberService;
         
-        public MembersController(ICustomerService customerService)
+        public MembersController(IMemberService memberService)
         {
-            _customerService = customerService;
+            _memberService = memberService;
         }
         // GET api/Customers
         [HttpGet]
         public ActionResult<IEnumerable<Member>> Get()
         {
 
-            return _customerService.GetAllCustomers();
+            return _memberService.GetAllMembers();
         }
 
         // GET api/Customers/5
@@ -44,16 +44,16 @@ namespace MyRestAPI.Controllers
 
 
             //return _customerService.FindCustomerByIdIncludeOrders(id);
-            return _customerService.FindCustomerByIdIncludeFines(id);
+            return _memberService.FindMemberByIdIncludeFines(id);
         }
 
         // POST api/Customers
         [HttpPost]
-        public ActionResult<Member> Post([FromBody] Member cust)
+        public ActionResult<Member> Post([FromBody] Member memb)
         {
             try
             {
-                return _customerService.CreateCustomer(cust);
+                return _memberService.CreateMember(memb);
             }
             catch (Exception e)
             {
@@ -73,7 +73,7 @@ namespace MyRestAPI.Controllers
                 return BadRequest("parameter id and customer id must be a match");
             }
 
-            return _customerService.UpdateCustomer(cust);
+            return _memberService.UpdateMember(cust);
 
         }
 
@@ -82,7 +82,7 @@ namespace MyRestAPI.Controllers
         public ActionResult<Member> Delete(int id)
         {// delete virker ikke efter hensigten
 
-            var customer = _customerService.DeleteCustomer(id);
+            var customer = _memberService.DeleteMember(id);
             if (customer ==null)
             {
                 return StatusCode(404, "Did not found customer with id: " + id);
